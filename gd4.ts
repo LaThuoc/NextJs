@@ -15,24 +15,26 @@ class NhanVien {
 }
 let nv1 = new NhanVien('Hoang', 26000000, 24)
 console.log(nv1.tinhLuongThucNhan())
-
+console.log("=====================================")
 class TaiKhoanNganHang {
     public tenChuThe: string;
-    private soDu: number;
+    public soDu: number;
 
     constructor(ten: string, soDuBanDau: number){
         this.tenChuThe = ten;
         this.soDu = soDuBanDau;
     }
 
-    public xemDoDu(){
-        return this.soDu
-    }
+    // public xemSoDu(){
+    //     return this.soDu
+    // }
 }
 let tk = new TaiKhoanNganHang("Thuoc", 1000000)
 console.log(tk.tenChuThe)
+tk.soDu = 50000000
+console.log(tk.soDu)
 
-
+console.log
 class NguoiDung {
     private  _tuoi: number = 0
 
@@ -49,3 +51,54 @@ class NguoiDung {
 }
 let user = new NguoiDung()
 user.tuoi = -5
+
+console.log("============================================")
+
+abstract class NhanVienAbstract {
+    ten: string;
+    constructor(ten: string){
+        this.ten = ten;
+    }
+    abstract tinhLuong(): number
+}
+
+class NhanVienVanPhongMoi extends NhanVienAbstract {
+    luongCoBan: number = 15000000;
+    tinhLuong(): number {
+        return this.luongCoBan;
+    }
+}
+
+class NhanVienPartTimeMoi extends NhanVienAbstract {
+    luongTheoGio: number = 50000;
+    soGioLam: number = 80
+    tinhLuong(): number {
+        return this.luongTheoGio
+    }
+}
+
+function inPhieuLuong(nv: NhanVienAbstract){
+    let luongThucNhan = nv.tinhLuong()
+    console.log(`Nhân Viên: ${nv.ten} - Lương: ${luongThucNhan}`)
+}
+
+let nvMoi1 = new NhanVienVanPhongMoi("Thuoc")
+inPhieuLuong(nvMoi1)
+
+console.log("============================")
+// Interface vs Class
+
+interface ChayDuoc {
+    tocDoToiDa: number;
+    chay(): void;
+}
+class XeMay implements ChayDuoc {
+    tocDoToiDa: number = 150;
+    chay(){
+        console.log('Xe dang chay')
+    }
+}
+let chiecXeCuaToi = new XeMay();
+chiecXeCuaToi.chay()
+console.log(`Tốc độ tối đa là: ${chiecXeCuaToi.tocDoToiDa}`)
+
