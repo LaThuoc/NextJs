@@ -20,10 +20,6 @@ interface Product {
     id: number;
     price: number;
 }
-function responseProduct(doiTuong: Product): void{
-    console.log("Ma ID la", doiTuong.id  )
-}
-responseProduct({id: 1, price: 20})
 let responseUser: ApiResponse<User> = {
     status: "success",
     code: 200,
@@ -76,3 +72,9 @@ function logThongTin<T extends CoId>(doiTuong: T): void {
     console.log("Handling object has ID:", doiTuong.id)
 }
 logThongTin({id: 101, name:'Thuoc'})
+
+function taoCapDoi<T, U>(dauVao1: T, dauVao2: U): [T, U]{ 
+    return [dauVao1, dauVao2]
+}
+
+let capDoi = taoCapDoi<number, string>(1, Một)

@@ -21,6 +21,9 @@
 
 
 // --- 1. RÚT TRÍCH ĐIỂM CHUNG VÀO INTERFACE CHA ---
+
+
+// PHẦN B - Ràng buộc & Phối hợp (Constraint, Multiple Types)
 interface BaseEntity {
     id: number; 
 }
